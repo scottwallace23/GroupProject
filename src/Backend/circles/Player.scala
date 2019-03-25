@@ -7,7 +7,7 @@ object Player extends Circles {
   this.size = 10  //Initial size for player circle
   var playerLocationX = 0
   var playerLocationY = 0 //initializes location at (0,0)
-
+/*
   def randomColor(): String ={      //Returns the random color for the player circle.
 
     val arrayColors: Array[Int] = Array(0,1,2,3)
@@ -25,13 +25,17 @@ object Player extends Circles {
     else if(randomNum == 3){
       this.color = "yellow"
     }
-   this.color
+    this.color
   }
-
+*/
   def eatFood(): Int = {
+    if(Food.size <= 0){
+      Food.size = 0
+      Food.size
+    }
     if(Player.playerLocationX == Food.foodLocationX && Player.playerLocationY == Food.foodLocationY){
       Player.size += Food.size  //Adds to the player's size by the size of the food
-      Food.size -= 1  //Subtracts the size of the food which basically destroys the food once its eaten
+      Food.size -= Food.size  //Subtracts the size of the food which basically destroys the food once its eaten
     }
     Player.size
 
@@ -59,9 +63,6 @@ object Player extends Circles {
     playerLocationX
   }
 
-  def main(args: Array[String]): Unit = {
-    println(randomColor())
-  }
 
 
 

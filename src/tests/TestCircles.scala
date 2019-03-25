@@ -36,7 +36,21 @@ class TestCircles extends FunSuite {
     Food.foodLocationX = 2
     Food.foodLocationY =1
     assert(Player.eatFood() == 10)
+    Food.size = -1
+    Player.playerLocationX = 5
+    Player.playerLocationY = 3
+    Food.foodLocationX = 5
+    Food.foodLocationY =3
+    assert(Player.eatFood() == 10)
+    Food.size = 0
+    Player.playerLocationX =20
+    Player.playerLocationY = 65
+    Food.foodLocationX = 20
+    Food.foodLocationY =65
+    assert(Player.eatFood() == 10)
+
   }
+
 
 
 
