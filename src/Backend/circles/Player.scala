@@ -5,8 +5,20 @@ import scala.util.Random
 
 object Player extends Circles {
   this.size = 10  //Initial size for player circle
-  var playerLocationX = 0
-  var playerLocationY = 0 //initializes location at (0,0)
+  def setXLoc(): Int = {
+    val xmax = 1000
+    val rand = new scala.util.Random
+    val xloc = rand.nextInt(xmax)
+    xloc
+  }
+  def setYLoc(): Int = {
+    val ymax = 1000
+    val rand = new scala.util.Random
+    val yloc = rand.nextInt(ymax)
+    yloc
+  }
+  var playerLocationX = setXLoc()
+  var playerLocationY = setYLoc() //initializes location at a random (x,y) coordiante
 
   def randomColor(): String ={      //Returns the random color for the player circle.
 
