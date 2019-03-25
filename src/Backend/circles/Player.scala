@@ -30,7 +30,7 @@ object Player extends Circles {
 
   def eatFood(): Int = {
     if(Player.playerLocationX == Food.foodLocationX && Player.playerLocationY == Food.foodLocationY){
-      Player.size += 1  //Adds to the player's size by the size of the food
+      Player.size += Food.size  //Adds to the player's size by the size of the food
       Food.size -= 1  //Subtracts the size of the food which basically destroys the food once its eaten
     }
     Player.size
@@ -57,6 +57,10 @@ object Player extends Circles {
     }
 
     playerLocationX
+  }
+
+  def main(args: Array[String]): Unit = {
+    println(randomColor())
   }
 
 
