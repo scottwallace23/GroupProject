@@ -7,22 +7,6 @@ class TestCircles extends FunSuite {
   Player.playerLocationX = 10
 
 
-  test(testName = "Move Player Test Vertical"){
-
-    assert(Player.moveVertical(Up = "W", Down = "") == 6)
-    Player.playerLocationY = 5
-    assert(Player.moveVertical(Up ="", Down = "S") == 4)
-
-  }
-
-  test(testName = "Move Player Test Horizontal"){
-
-    assert(Player.moveHorizontal("A", "")== 9)
-    Player.playerLocationX = 10
-    assert(Player.moveHorizontal(Left = "", Right = "D") == 11)
-
-  }
-
   test(testName = "eatFood Test"){
     Player.size = 10
     Player.playerLocationX = 5

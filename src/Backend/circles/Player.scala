@@ -18,10 +18,9 @@ object Player extends Circles {
     yloc
   }
   var playerLocationX = setXLoc()
-  var playerLocationY = setYLoc() //initializes location at a random (x,y) coordiante
+  var playerLocationY = setYLoc() //initializes location at a random (x,y) coordinate
 
-  def randomColor(): String ={      //Returns the random color for the player circle.
-
+/* def randomColor(): String ={      //Returns the random color for the player circle.
     val arrayColors: Array[Int] = Array(0,1,2,3)
     val randomNum = Random.shuffle(arrayColors.toList).head
 
@@ -39,6 +38,7 @@ object Player extends Circles {
     }
    this.color
   }
+*/
 
   def eatFood(): Int = {
     if(Player.playerLocationX == Food.foodLocationX && Player.playerLocationY == Food.foodLocationY){
@@ -49,30 +49,8 @@ object Player extends Circles {
 
   }
 
-  def moveVertical(Up:String,Down:String):Int = {   //Location moving on the Y axis
-
-    if(Up == "W"){
-      playerLocationY += 1
-    }
-    else if(Down == "S"){
-      playerLocationY -= 1
-    }
-    playerLocationY
-
-  }
-  def moveHorizontal(Left: String, Right:String): Int = {  // Location moving on the Y axis
-    if(Left == "A"){
-      playerLocationX -= 1
-    }
-    else if(Right == "D"){
-      playerLocationX += 1
-    }
-
-    playerLocationX
-  }
-
   def main(args: Array[String]): Unit = {
-    println(randomColor())
+    //println(randomColor())
   }
 
 
