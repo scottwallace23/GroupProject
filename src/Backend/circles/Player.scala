@@ -1,33 +1,35 @@
 package Backend.circles
 
+import scalafx.scene.paint.Color
+
 import scala.util.Random
 
 
 object Player extends Circles {
-  this.size = 10  //Initial size for player circle
-  var playerLocationX = 0
-  var playerLocationY = 0 //initializes location at (0,0)
-/*
-  def randomColor(): String ={      //Returns the random color for the player circle.
+  this.size = 20  //Initial size for player circle
+  var playerLocationX = centerX
+  var playerLocationY = centerY
+
+  def randomColor(): Color = {      //Returns the random color for the player circle.
 
     val arrayColors: Array[Int] = Array(0,1,2,3)
     val randomNum = Random.shuffle(arrayColors.toList).head
 
     if(randomNum == 0){
-      this.color = "red"
+      this.color = Color.Red
     }
     else if(randomNum == 1){
-      this.color = "blue"
+      this.color = Color.Blue
     }
     else if(randomNum == 2){
-      this.color = "green"
+      this.color = Color.Green
     }
     else if(randomNum == 3){
-      this.color = "yellow"
+      this.color = Color.Yellow
     }
     this.color
   }
-*/
+
   def eatFood(): Int = {
     if(Food.size <= 0){
       Food.size = 0
@@ -39,28 +41,6 @@ object Player extends Circles {
     }
     Player.size
 
-  }
-
-  def moveVertical(Up:String,Down:String):Int = {   //Location moving on the Y axis
-
-    if(Up == "W"){
-      playerLocationY += 1
-    }
-    else if(Down == "S"){
-      playerLocationY -= 1
-    }
-    playerLocationY
-
-  }
-  def moveHorizontal(Left: String, Right:String): Int = {  // Location moving on the Y axis
-    if(Left == "A"){
-      playerLocationX -= 1
-    }
-    else if(Right == "D"){
-      playerLocationX += 1
-    }
-
-    playerLocationX
   }
 
 
