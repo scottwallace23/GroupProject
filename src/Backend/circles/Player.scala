@@ -43,16 +43,13 @@ object Player extends Circles {
     this.color
   }
 
-  def eatFood(): Double = {
+  def eatFood(): Unit = {
     if (Food.size <= 0) {
       Food.size = 0
-      Food.size
     }
-    if (Player.playerLocationX == Food.foodLocationX && Player.playerLocationY == Food.foodLocationY) {
-      Player.size += Food.size //Adds to the player's size by the size of the food
-      Food.size -= Food.size //Subtracts the size of the food which basically destroys the food once its eaten
-    }
-    Player.size
+    Player.size += Food.size //Adds to the player's size by the size of the food
+    Food.size -= Food.size //Subtracts the size of the food which basically destroys the food once its eaten
+
   }
 
 

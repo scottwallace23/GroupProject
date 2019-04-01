@@ -9,7 +9,6 @@ import scalafx.scene.paint.{LinearGradient, Stops}
 import scalafx.scene.text.Text
 import Backend.Score
 
-import scala.swing._
 
 object ScoreBoardGUI extends JFXApp {
 //  val frame = new MainFrame {
