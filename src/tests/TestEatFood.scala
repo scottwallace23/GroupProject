@@ -1,7 +1,7 @@
 import org.scalatest._
 import Backend.circles.{Player,Food}
 
-class TestCircles extends FunSuite {
+class TestEatFood extends FunSuite {
 
   Player.playerLocationY = 5
   Player.playerLocationX = 10
@@ -9,12 +9,14 @@ class TestCircles extends FunSuite {
 
   test(testName = "eatFood Test"){
     Player.size = 10
+    Food.size = 5
     Player.playerLocationX = 5
     Player.playerLocationY = 6      // Location is exactly the same, therefore adds one to the player's size
     Food.foodLocationX = 5
     Food.foodLocationY = 6
-    assert(Player.eatFood() == 11)
-    Player.size = 10              // I reset the players size for the next assertion, it would save 11 if I didn't
+    assert(Player.eatFood() == 15)
+    Player.size = 10
+    Food.size = 5   // I reset the players size for the next assertion, it would save 11 if I didn't
     Player.playerLocationX = 5
     Player.playerLocationY = 3
     Food.foodLocationX = 2
