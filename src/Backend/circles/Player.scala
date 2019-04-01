@@ -10,8 +10,8 @@ object Player extends Circles {
 
   val player = new Player
   this.size = 20  //Initial size for player circle
-  var playerLocationX = player.centerX.value
-  var playerLocationY = player.centerX.value
+  var playerLocationX = 0
+  var playerLocationY = 0
 
   def randomColor(): Color = {      //Returns the random color for the player circle.
     val arrayColors: Array[Int] = Array(0,1,2,3,4,5,6,7)
@@ -43,13 +43,14 @@ object Player extends Circles {
     this.color
   }
 
-  def eatFood(): Unit = {
+  def eatFood(): Double = {
     if (Food.size <= 0) {
       Food.size = 0
     }
+    if(Player.playerLocationX == Food.foodLocationX && Player.playerLocationY == Food.foodLocationY)
     Player.size += Food.size //Adds to the player's size by the size of the food
     Food.size -= Food.size //Subtracts the size of the food which basically destroys the food once its eaten
-
+    Player.size.toDouble
   }
 
 
