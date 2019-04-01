@@ -1,10 +1,15 @@
 package Backend.circles
 
+import gui.GUI.Food
+import javafx.scene.shape.Circle
+import scalafx.scene.paint.Color
+
 
 object Food extends Circles {
   this.size = 5     //Food always has the size of 1
-  //this.color = "green"   //Food is always green
-  var foodLocationX = centerX
-  var foodLocationY = centerY
+  this.color = Color.Green   //Food is always green
+  val food = new Food
+  var foodLocationX = food.centerX.value
+  var foodLocationY = food.centerY.value
 
 }
