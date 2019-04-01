@@ -1,11 +1,8 @@
+
+import Backend.circles.{Food, Player}
+import gui.GUI._
 import org.scalatest._
-import Backend.circles.{Player,Food}
-
 class TestEatFood extends FunSuite {
-
-  Player.playerLocationY = 5
-  Player.playerLocationX = 10
-
 
   test(testName = "eatFood Test"){
     Player.size = 10
@@ -34,15 +31,6 @@ class TestEatFood extends FunSuite {
     Food.foodLocationX = 20
     Food.foodLocationY =65
     assert(Player.eatFood() == 10)
-
   }
-
-
-
-
-
-
-
-
 
 }
