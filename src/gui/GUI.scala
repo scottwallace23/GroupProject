@@ -12,21 +12,15 @@ import scalafx.scene.{Group, PerspectiveCamera, Scene}
 object GUI extends JFXApp {
   class Player extends Circle {
     centerX = Math.random() * 300
-    var cenX = centerX.toDouble
     centerY = Math.random() * 300
-    var cenY = centerY.toDouble
     radius = Player.size
-    var rad = radius.toDouble
     fill = Player.randomColor()
   }
 
   class Food extends Circle {
     centerX = Math.random() * 300
-    var cenX = centerX.toDouble
     centerY = Math.random() * 300
-    var cenY = centerY.toDouble
     radius = Food.size
-    var rad = radius.toDouble
     fill = Food.color
   }
   val player = new Player
@@ -43,13 +37,21 @@ object GUI extends JFXApp {
   }
   val food1 = new Food
   val food2 = new Food
+  val food3 = new Food
+  val food4 = new Food
+  val food5 = new Food
+  val food6 = new Food
+  val food7 = new Food
+  val food8 = new Food
+  val food9 = new Food
+  val food10 = new Food
 
   stage = new application.JFXApp.PrimaryStage {
     title = ""
     scene = new Scene(600, 600) {
-      var food = List(food1, food2)
+      var food = List(food1, food2, food3, food4, food5, food6, food7, food8, food9, food10)
       var players = List(player, player2)
-      content = List(food1, food2, player, player2)
+      content = List(food1, food2, food3, food4, food5, food6, food7, food8, food9, food10, player, player2)
       addEventHandler(KeyEvent.KEY_PRESSED, (event: KeyEvent) => movePlayer(event.getCode))
       var lastUpdateTime = 0
       val timer = AnimationTimer(t => {
@@ -60,7 +62,7 @@ object GUI extends JFXApp {
             val dx = player.centerX.value - f.centerX.value
             val dy = player.centerY.value - f.centerY.value
             val dist = Math.sqrt((dx * dx) + (dy * dy))
-            if (dist < 10) {
+            if (dist < player.radius.value) {
               player.radius.value += f.radius.value
               f.radius.value = 0
             }
@@ -68,7 +70,17 @@ object GUI extends JFXApp {
           val pdx = player.centerX.value - player2.centerX.value
           val pdy = player.centerY.value - player2.centerY.value
           val pdist = Math.sqrt((pdx * pdx) + (pdy * pdy))
-          if (pdist < 10){
+          if (pdist < player.radius.value){
+            if(player.radius.value > player2.radius.value){
+              player.radius.value += player2.radius.value
+              player2.radius.value = 0
+            }
+            else if(player.radius.value < player2.radius.value){
+              player2.radius.value += player.radius.value
+              player.radius.value = 0
+            }
+          }
+          else if(pdist < player2.radius.value){
             if(player.radius.value > player2.radius.value){
               player.radius.value += player2.radius.value
               player2.radius.value = 0
