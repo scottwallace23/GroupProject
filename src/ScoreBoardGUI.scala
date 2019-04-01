@@ -27,7 +27,7 @@ object ScoreBoardGUI extends JFXApp {
 //  }
   val score = new Score
   stage = new PrimaryStage {
-    title = "Score Board"
+    title = "Score Boards"
     scene = new Scene() {
       fill = LightBlue
       content = new HBox {
