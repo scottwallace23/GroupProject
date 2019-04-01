@@ -11,15 +11,15 @@ import scalafx.scene.{Group, PerspectiveCamera, Scene}
 
 object GUI extends JFXApp {
   class Player extends Circle {
-    centerX = Math.random() * 300
-    centerY = Math.random() * 300
+    centerX = Math.random() * 600
+    centerY = Math.random() * 600
     radius = Player.size
     fill = Player.randomColor()
   }
 
   class Food extends Circle {
-    centerX = Math.random() * 300
-    centerY = Math.random() * 300
+    centerX = Math.random() * 600
+    centerY = Math.random() * 600
     radius = Food.size
     fill = Food.color
   }
@@ -35,19 +35,10 @@ object GUI extends JFXApp {
       case _ =>
     }
   }
-  val food1 = new Food
-  val food2 = new Food
-  val food3 = new Food
-  val food4 = new Food
-  val food5 = new Food
-  val food6 = new Food
-  val food7 = new Food
-  val food8 = new Food
-  val food9 = new Food
-  val food10 = new Food
+  val food1, food2, food3, food4, food5, food6, food7, food8, food9, food10 = new Food
 
   stage = new application.JFXApp.PrimaryStage {
-    title = ""
+    title = "CSE116.io"
     scene = new Scene(600, 600) {
       var food = List(food1, food2, food3, food4, food5, food6, food7, food8, food9, food10)
       var players = List(player, player2)
@@ -95,6 +86,5 @@ object GUI extends JFXApp {
       })
       timer.start()
     }
-
   }
 }
