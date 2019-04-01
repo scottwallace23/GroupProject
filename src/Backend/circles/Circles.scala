@@ -1,14 +1,15 @@
 package Backend.circles
 
-import javafx.scene.paint.Color
+import scalafx.scene.paint.Color
+import scalafx.scene.shape.Circle
 
 
 class Circles {
-  var centerX: Double = 0.0
-  var centerY: Double = 0.0
+
   var radius = size
   var size: Int = 0
-  var color: Color = Color.BLUE
+  var color: Color = Color.Blue
+
 
 
 
