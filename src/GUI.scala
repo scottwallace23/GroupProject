@@ -1,4 +1,7 @@
 
+import java.awt.Label
+import java.awt.event.ActionEvent
+
 import Backend.circles.{Food, Player}
 import javafx.scene.input.{KeyCode, KeyEvent}
 import scalafx.animation.AnimationTimer
@@ -7,6 +10,9 @@ import scalafx.application.JFXApp.PrimaryStage
 import scalafx.scene.paint.Color
 import scalafx.scene.shape.{Circle, Shape}
 import scalafx.scene.{Group, Scene}
+import scalafx.scene.effect.BlendMode.Blue
+import scalafx.scene.paint.Color._
+
 
 object GUI extends JFXApp {
 
@@ -33,6 +39,7 @@ object GUI extends JFXApp {
   }
   g.children.addAll(food)
   g.children.add(player)
+
 
 
   def keyPressed(key: KeyCode): Unit = {
@@ -67,4 +74,6 @@ object GUI extends JFXApp {
     }
 
   }
+
+
 }

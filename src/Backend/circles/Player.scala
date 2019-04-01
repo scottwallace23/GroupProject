@@ -40,8 +40,9 @@ object Player extends Circles {
       Food.size -= Food.size  //Subtracts the size of the food which basically destroys the food once its eaten
     }
     Player.size
-
   }
+
+
 
 
 
