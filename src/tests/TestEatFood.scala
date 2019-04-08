@@ -1,7 +1,7 @@
 
 import Backend.circles.{Food, Player}
-import gui.GUI._
 import org.scalatest._
+
 class TestEatFood extends FunSuite {
 
   test(testName = "eatFood Test"){
