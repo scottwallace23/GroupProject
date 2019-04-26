@@ -1,60 +1,102 @@
 package Backend.circles
-
-import gui.GUI.Player
+import gui.GUI.{food, player, player2}
 import javafx.scene.input.KeyCode
+import scalafx.animation.AnimationTimer
 import scalafx.scene.paint.Color
-
+import scalafx.scene.shape.Circle
 import scala.util.Random
 
-object Player extends Circles {
+class Player extends Circle {
+  centerX = Math.random() * 600
+  centerY = Math.random() * 600
+  radius = 5
+  fill = randomColor()
 
-  val player = new Player
-  this.size = 20  //Initial size for player circle
-  var playerLocationX = 0
-  var playerLocationY = 0
-
-  def randomColor(): Color = {      //Returns the random color for the player circle.
-    val arrayColors: Array[Int] = Array(0,1,2,3,4,5,6,7)
+  def randomColor(): Color = { //Returns the random color for the player circle.
+    val arrayColors: Array[Int] = Array(0, 1, 2, 3, 4, 5, 6, 7)
     val randomNum = Random.shuffle(arrayColors.toList).head
-    if(randomNum == 0){
-      this.color = Color.Red
+    var color: Color = Color.Red
+
+    if (randomNum == 0) {
+      color = Color.Red
     }
-    else if(randomNum == 1){
-      this.color = Color.Blue
+    else if (randomNum == 1) {
+      color = Color.Blue
     }
-    else if(randomNum == 2){
-      this.color = Color.Brown
+    else if (randomNum == 2) {
+      color = Color.Brown
     }
-    else if(randomNum == 3){
-      this.color = Color.FireBrick
+    else if (randomNum == 3) {
+      color = Color.FireBrick
     }
-    else if(randomNum == 4){
-      this.color = Color.DeepSkyBlue
+    else if (randomNum == 4) {
+      color = Color.DeepSkyBlue
     }
-    else if(randomNum == 5){
-      this.color = Color.Gold
+    else if (randomNum == 5) {
+      color = Color.Gold
     }
-    else if(randomNum == 6){
-      this.color = Color.DarkGreen
+    else if (randomNum == 6) {
+      color = Color.DarkGreen
     }
-    else if(randomNum == 7){
-      this.color = Color.LawnGreen
+    else if (randomNum == 7) {
+      color = Color.LawnGreen
     }
-    this.color
+    color
   }
 
-  def eatFood(): Double = {
-    if (Food.size <= 0) {
-      Food.size = 0
+  def movePlayer(key: KeyCode): Unit = { //This moves the player
+    key.getName match {
+      case "W" => player.centerY.value -= 10
+      case "S" => player.centerY.value += 10
+      case "A" => player.centerX.value -= 10
+      case "D" => player.centerX.value += 10
+      case _ =>
     }
-    if(Player.playerLocationX == Food.foodLocationX && Player.playerLocationY == Food.foodLocationY)
-    Player.size += Food.size //Adds to the player's size by the size of the food
-    Food.size -= Food.size //Subtracts the size of the food which basically destroys the food once its eaten
-    Player.size.toDouble
   }
 
+  def eat(): Unit = {
 
-
-
-
+    var lastUpdateTime = 0
+    val timer = AnimationTimer(t => {
+      if (lastUpdateTime > 0) {
+        val delta = (t - lastUpdateTime) / 100
+        for (f <- food) {
+          f.fill = Color.Green
+          f.setVisible(true)
+          val dx = player.centerX.value - f.centerX.value
+          val dy = player.centerY.value - f.centerY.value
+          val dist = Math.sqrt((dx * dx) + (dy * dy))
+          if (dist < player.radius.value) {
+            player.radius.value += f.radius.value
+            f.radius.value = 0
+          }
+        }
+        val pdx = player.centerX.value - player2.centerX.value
+        val pdy = player.centerY.value - player2.centerY.value
+        val pdist = Math.sqrt((pdx * pdx) + (pdy * pdy))
+        if (pdist < player.radius.value) {
+          if (player.radius.value > player2.radius.value) {
+            player.radius.value += player2.radius.value
+            player2.radius.value = 0
+          }
+          else if (player.radius.value < player2.radius.value) {
+            player2.radius.value += player.radius.value
+            player.radius.value = 0
+          }
+        }
+        else if (pdist < player2.radius.value) {
+          if (player.radius.value > player2.radius.value) {
+            player.radius.value += player2.radius.value
+            player2.radius.value = 0
+          }
+          else if (player.radius.value < player2.radius.value) {
+            player2.radius.value += player.radius.value
+            player.radius.value = 0
+          }
+        }
+      }
+      lastUpdateTime = t.toInt
+    })
+    timer.start()
+  }
 }

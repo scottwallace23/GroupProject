@@ -1,6 +1,6 @@
-package Backend
+/*package Backend
 
-import Backend.circles.{Circles, Player}
+import Backend.circles.Player
 import gui.GUI.Player
 
 class Score extends Circles{
@@ -10,3 +10,4 @@ class Score extends Circles{
     score
   }
 }
+*/
