@@ -1,25 +1,21 @@
 package agario.Backend
 
-import agario.Backend.circles.{Food, Player}
 import play.api.libs.json.{JsValue, Json}
 
 class Game {
 
   var players: Map[String, Player] = Map()
   var food: Map[String, Food] = Map()
-  var world = new WorldMap
-
+  var world = new WorldMap(300,300,300,300)
 
   def addPlayer(id: String): Unit = {
     val player = new Player
     players += (id -> player)
   }
-
   def removePlayer(id: String): Unit = {
     players(id).radius.value = 0
     players -= id
   }
-
   def update(): Unit = {
     for((k,v) <- players){
       v.eat()

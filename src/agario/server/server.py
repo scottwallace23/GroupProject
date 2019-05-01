@@ -38,14 +38,14 @@ Thread(target=scala_listener, args=(scala_socket,)).start()
 
 @server.on('connect')
 def got_message():
-    print(request.sid + " connected")
-    message = {"username": request.sid, "action": "connected"}
+    print(request.id + " connected")
+    message = {"username": request.id, "action": "connected"}
     send_to_scala(message)
 
 @server.on('disconnect')
 def disconnect():
-    print(request.sid + " disconnected")
-    message = {"username": request.sid, "action": "disconnected"}
+    print(request.id + " disconnected")
+    message = {"username": request.id, "action": "disconnected"}
     send_to_scala(message)
 
 @server.on('keys')
@@ -61,7 +61,7 @@ def key_state(jsonKeyStates):
         y = -1.0
     elif not key_states["w"] and key_states["s"]:
         y = 1.0
-    message = {"username": request.sid, "action": "move", "x": x, "y": y}
+    message = {"username": request.id, "action": "move", "x": x, "y": y}
     send_to_scala(message)
 
 @app.route('/')

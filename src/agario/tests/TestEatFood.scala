@@ -1,5 +1,5 @@
-
-import Backend.circles.{Food, Player}
+/*
+import agario.Backend.circles.{Food, Player}
 import org.scalatest._
 
 class TestEatFood extends FunSuite {
@@ -34,3 +34,4 @@ class TestEatFood extends FunSuite {
   }
 
 }
+*/

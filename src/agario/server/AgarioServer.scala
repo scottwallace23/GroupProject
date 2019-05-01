@@ -50,8 +50,6 @@ class AgarioServer(gameActor: ActorRef) extends Actor {
       case "connected" => gameActor ! AddPlayer(username)
       case "disconnected" => gameActor ! RemovePlayer(username)
       case "move" =>
-        val x = (message \ "x").as[Double]
-        val y = (message \ "y").as[Double]
         gameActor ! MovePlayerUp(username)
         gameActor ! MovePlayerDown(username)
         gameActor ! MovePlayerLeft(username)
@@ -59,7 +57,7 @@ class AgarioServer(gameActor: ActorRef) extends Actor {
     }
   }
 }
-object AgarioTCPSocketServer {
+object AgarioServer {
 
   def main(args: Array[String]): Unit = {
     val actorSystem = ActorSystem()

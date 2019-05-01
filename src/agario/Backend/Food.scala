@@ -1,20 +1,19 @@
-package Backend.circles
+package agario.Backend
 
 import scalafx.scene.paint.Color
 import scalafx.scene.shape.Circle
 
 import scala.collection.mutable.ListBuffer
 
-
 class Food extends Circle {
-  centerX = Math.random() * 600
-  centerY = Math.random() * 600
+  val game = new Game
+  centerX = Math.random() * 1400
+  centerY = Math.random() * 1400
   radius = 2
   fill = Color.Green
-
   def multipleFood(): ListBuffer[Food] = {
     val thing = true
-    val lim: Int = 100
+    val lim: Int = 500
     var x: Int = 1
     val one = new Food
     var food: ListBuffer[Food] = ListBuffer(one)
@@ -25,5 +24,4 @@ class Food extends Circle {
     }
     food
   }
-
 }

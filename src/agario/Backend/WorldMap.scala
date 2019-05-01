@@ -1,6 +1,10 @@
 package agario.Backend
 
-class WorldMap {
-  var width = 90
-  var height = 45
+class WorldMap(var bottomY: Int, var topY: Int,rightX: Int, leftX: Int) {
+  def width(): Int ={
+    (rightX - leftX) / 2
+  }
+  def height(): Int = {
+    (bottomY - topY) / 2
+  }
 }

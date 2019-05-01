@@ -1,4 +1,4 @@
-package Backend.circles
+package agario.Backend
 import gui.GUI.{food, player, player2}
 import javafx.scene.input.KeyCode
 import scalafx.animation.AnimationTimer
@@ -7,11 +7,12 @@ import scalafx.scene.shape.Circle
 import scala.util.Random
 
 class Player extends Circle {
-  centerX = Math.random() * 600
-  centerY = Math.random() * 600
+  val game = new Game
+  centerX = Math.random() * 1000
+  centerY = Math.random() * 1000
   radius = 5
   fill = randomColor()
-
+  val speed = 3
   def randomColor(): Color = { //Returns the random color for the player circle.
     val arrayColors: Array[Int] = Array(0, 1, 2, 3, 4, 5, 6, 7)
     val randomNum = Random.shuffle(arrayColors.toList).head
@@ -43,26 +44,22 @@ class Player extends Circle {
     }
     color
   }
-
   def movePlayer(key: KeyCode): Unit = { //This moves the player
     key.getName match {
-      case "W" => player.centerY.value -= 10
-      case "S" => player.centerY.value += 10
-      case "A" => player.centerX.value -= 10
-      case "D" => player.centerX.value += 10
+      case "W" => player.centerY.value -= speed
+      case "S" => player.centerY.value += speed
+      case "A" => player.centerX.value -= speed
+      case "D" => player.centerX.value += speed
       case _ =>
     }
   }
-
   def eat(): Unit = {
-
-    var lastUpdateTime = 0
+    var lastUpdateTime = System.nanoTime()
     val timer = AnimationTimer(t => {
       if (lastUpdateTime > 0) {
         val delta = (t - lastUpdateTime) / 100
         for (f <- food) {
           f.fill = Color.Green
-          f.setVisible(true)
           val dx = player.centerX.value - f.centerX.value
           val dy = player.centerY.value - f.centerY.value
           val dist = Math.sqrt((dx * dx) + (dy * dy))
